@@ -259,7 +259,7 @@ Thank you!`;
           </motion.div>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8">
           {/* Calculator Form */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
@@ -277,7 +277,7 @@ Thank you!`;
                 {/* Industry Selection */}
                 <div>
                   <label className="text-sm font-medium mb-3 block">Industry Type</label>
-                  <div className="grid grid-cols-2 gap-2">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                     {industryTypes.map((industry) => (
                       <Button
                         key={industry.id}
@@ -357,7 +357,7 @@ Thank you!`;
                 {/* Timeline */}
                 <div>
                   <label className="text-sm font-medium mb-3 block">Project Timeline</label>
-                  <div className="grid grid-cols-3 gap-2">
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
                     {[
                       { id: "rush", name: "Rush (1-2 months)", multiplier: "1.5x" },
                       { id: "standard", name: "Standard (2-4 months)", multiplier: "1.0x" },

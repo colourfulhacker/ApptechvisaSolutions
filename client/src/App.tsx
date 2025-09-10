@@ -5,6 +5,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import ErrorBoundary from "@/components/error-boundary";
 import HealthCheck from "@/components/health-check";
+import PerformanceOptimizer from "@/components/performance-optimizer";
 import NotFound from "@/pages/not-found";
 import Home from "@/pages/home";
 import Services from "@/pages/services";
@@ -40,12 +41,19 @@ function App() {
           <div className="min-h-screen bg-background">
             <ScrollIndicator />
             <Navigation />
-            <main className="pt-16">
+            <a 
+              href="#main-content" 
+              className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-saffron text-white px-4 py-2 rounded-md z-50"
+            >
+              Skip to main content
+            </a>
+            <main id="main-content" className="pt-16" role="main">
               <Router />
             </main>
             <Footer />
             <Toaster />
             <HealthCheck />
+            <PerformanceOptimizer />
           </div>
         </TooltipProvider>
       </QueryClientProvider>

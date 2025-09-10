@@ -53,13 +53,13 @@ export default function Hero() {
           transition={{ duration: 0.8 }}
           className="slide-in-bottom"
         >
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold font-serif mb-6">
+          <h1 className="text-responsive-3xl font-bold font-serif mb-6 break-words">
             <span className="gradient-text" data-testid="text-hero-title-innovative">Innovative IT Solutions</span>
             <br />
             <span className="text-foreground" data-testid="text-hero-title-excellence">for Global Excellence</span>
           </h1>
           
-          <p className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-4xl mx-auto leading-relaxed" data-testid="text-hero-description">
+          <p className="text-responsive-lg text-muted-foreground mb-8 max-w-4xl mx-auto leading-relaxed break-words" data-testid="text-hero-description">
             Empowering small to medium businesses with modern software development, web applications, and digital solutions. We focus on delivering quality results that help your business grow.
           </p>
           
