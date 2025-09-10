@@ -8,14 +8,14 @@ const contactMethods = [
     icon: Phone,
     title: "Phone Support",
     description: "Speak directly with our technical experts",
-    contact: "+91 80000 00000",
-    availability: "Mon-Sat, 9 AM - 6 PM IST"
+    contact: "+91 9647457831",
+    availability: "Mon-Sat, 10 AM - 7 PM IST"
   },
   {
     icon: Mail,
     title: "Email Support",
     description: "Get detailed responses to your inquiries",
-    contact: "hello@apptechvisa.com",
+    contact: "apptechvisas@gmai.com",
     availability: "24/7 Response within 4 hours"
   },
   {
@@ -29,7 +29,7 @@ const contactMethods = [
     icon: Headphones,
     title: "Technical Support",
     description: "Dedicated support for existing clients",
-    contact: "support@apptechvisa.com",
+    contact: "apptechvisas@gmai.com",
     availability: "24/7 Emergency Support"
   }
 ];
@@ -196,10 +196,10 @@ export default function Contact() {
                   <MapPin className="text-white" size={24} />
                 </div>
                 <h3 className="text-xl font-bold mb-3" data-testid="text-india-office-title">
-                  India Development Center
+                  Main Office
                 </h3>
                 <p className="text-muted-foreground mb-4" data-testid="text-india-office-description">
-                  Our primary development hub in Bangalore houses our core engineering team and serves as the center for innovation and technical excellence.
+                  Our headquarters in West Bengal serves as the center for development, innovation, and client engagement across global markets.
                 </p>
                 <div className="space-y-2 text-sm">
                   <div className="flex items-center justify-center space-x-2">
@@ -207,7 +207,7 @@ export default function Contact() {
                     <span data-testid="text-india-office-timezone">IST (GMT +5:30)</span>
                   </div>
                   <div className="text-muted-foreground" data-testid="text-india-office-specialization">
-                    Specialization: Development, AI/ML, Data Analytics
+                    Address: 5QGG+4QP, Rampurhat, West Bengal 731224
                   </div>
                 </div>
               </div>
@@ -217,18 +217,18 @@ export default function Contact() {
                   <MapPin className="text-white" size={24} />
                 </div>
                 <h3 className="text-xl font-bold mb-3" data-testid="text-usa-office-title">
-                  USA Business Office
+                  Global Services
                 </h3>
                 <p className="text-muted-foreground mb-4" data-testid="text-usa-office-description">
-                  Our Silicon Valley presence ensures close collaboration with North American clients and access to the latest technology trends and partnerships.
+                  We provide worldwide technology solutions and support to clients across multiple continents with 24/7 availability.
                 </p>
                 <div className="space-y-2 text-sm">
                   <div className="flex items-center justify-center space-x-2">
                     <Clock className="text-saffron" size={16} />
-                    <span data-testid="text-usa-office-timezone">PST (GMT -8:00)</span>
+                    <span data-testid="text-usa-office-timezone">Multiple Timezones</span>
                   </div>
                   <div className="text-muted-foreground" data-testid="text-usa-office-specialization">
-                    Specialization: Client Relations, Strategy, Partnerships
+                    Specialization: Global Client Support & Solutions
                   </div>
                 </div>
               </div>

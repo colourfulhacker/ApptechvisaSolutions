@@ -49,7 +49,11 @@ export class MemStorage implements IStorage {
   async createContact(insertContact: InsertContact): Promise<Contact> {
     const id = randomUUID();
     const contact: Contact = { 
-      ...insertContact, 
+      ...insertContact,
+      phone: insertContact.phone || null,
+      company: insertContact.company || null,
+      budget: insertContact.budget || null,
+      services: insertContact.services || null,
       id, 
       createdAt: new Date() 
     };
@@ -66,7 +70,9 @@ export class MemStorage implements IStorage {
   async createDemoRequest(insertDemoRequest: InsertDemoRequest): Promise<DemoRequest> {
     const id = randomUUID();
     const demoRequest: DemoRequest = { 
-      ...insertDemoRequest, 
+      ...insertDemoRequest,
+      industry: insertDemoRequest.industry || null,
+      projectDescription: insertDemoRequest.projectDescription || null,
       id, 
       createdAt: new Date() 
     };
@@ -83,7 +89,11 @@ export class MemStorage implements IStorage {
   async createCareerApplication(insertCareer: InsertCareer): Promise<Career> {
     const id = randomUUID();
     const career: Career = { 
-      ...insertCareer, 
+      ...insertCareer,
+      phone: insertCareer.phone || null,
+      experience: insertCareer.experience || null,
+      portfolio: insertCareer.portfolio || null,
+      coverLetter: insertCareer.coverLetter || null,
       id, 
       createdAt: new Date() 
     };

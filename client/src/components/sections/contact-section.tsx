@@ -126,14 +126,14 @@ export default function ContactSection() {
               </div>
               <div className="space-y-4 text-sm text-muted-foreground">
                 <div>
-                  <div className="font-medium text-foreground" data-testid="text-office-india-title">India Headquarters</div>
-                  <div data-testid="text-office-india-location">Bangalore, Karnataka</div>
-                  <div data-testid="text-office-india-description">Tech Capital of India</div>
+                  <div className="font-medium text-foreground" data-testid="text-office-india-title">Main Office</div>
+                  <div data-testid="text-office-india-location">5QGG+4QP, Rampurhat</div>
+                  <div data-testid="text-office-india-description">West Bengal 731224, India</div>
                 </div>
                 <div>
-                  <div className="font-medium text-foreground" data-testid="text-office-global-title">Global Office</div>
-                  <div data-testid="text-office-global-location">Silicon Valley, USA</div>
-                  <div data-testid="text-office-global-description">Innovation Hub</div>
+                  <div className="font-medium text-foreground" data-testid="text-office-global-title">Global Services</div>
+                  <div data-testid="text-office-global-location">Worldwide Clients</div>
+                  <div data-testid="text-office-global-description">Remote & On-site Support</div>
                 </div>
               </div>
             </motion.div>
@@ -155,11 +155,11 @@ export default function ContactSection() {
               <div className="space-y-2 text-sm text-muted-foreground">
                 <div className="flex justify-between">
                   <span>Monday - Friday</span>
-                  <span data-testid="text-hours-weekday">9:00 AM - 6:00 PM IST</span>
+                  <span data-testid="text-hours-weekday">10:00 AM - 7:00 PM IST</span>
                 </div>
                 <div className="flex justify-between">
                   <span>Saturday</span>
-                  <span data-testid="text-hours-saturday">10:00 AM - 4:00 PM IST</span>
+                  <span data-testid="text-hours-saturday">10:00 AM - 5:00 PM IST</span>
                 </div>
                 <div className="flex justify-between">
                   <span>Sunday</span>
@@ -184,23 +184,23 @@ export default function ContactSection() {
               </div>
               <div className="space-y-3">
                 <a 
-                  href="mailto:hello@apptechvisa.com" 
+                  href="mailto:apptechvisas@gmai.com" 
                   className="flex items-center text-sm text-muted-foreground hover:text-saffron transition-colors"
                   data-testid="link-email"
                 >
                   <Mail className="mr-2" size={16} />
-                  hello@apptechvisa.com
+                  apptechvisas@gmai.com
                 </a>
                 <a 
-                  href="tel:+918000000000" 
+                  href="tel:+919647457831" 
                   className="flex items-center text-sm text-muted-foreground hover:text-saffron transition-colors"
                   data-testid="link-phone"
                 >
                   <Phone className="mr-2" size={16} />
-                  +91 80000 00000
+                  +91 9647457831
                 </a>
                 <a 
-                  href="#" 
+                  href="https://wa.me/919647457831" 
                   className="flex items-center text-sm text-muted-foreground hover:text-saffron transition-colors"
                   data-testid="link-whatsapp"
                 >
@@ -324,7 +324,7 @@ export default function ContactSection() {
                   <Checkbox
                     id="terms"
                     checked={agreedToTerms}
-                    onCheckedChange={setAgreedToTerms}
+                    onCheckedChange={(checked) => setAgreedToTerms(checked === true)}
                     required
                     data-testid="checkbox-terms"
                   />

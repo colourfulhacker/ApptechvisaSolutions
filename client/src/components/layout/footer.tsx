@@ -44,6 +44,11 @@ export default function Footer() {
             <p className="text-white/80 mb-6 text-sm leading-relaxed">
               Transforming businesses with innovative IT solutions. From concept to deployment, we deliver excellence that drives global success.
             </p>
+            <div className="text-white/80 text-sm space-y-1 mb-6">
+              <div>📧 apptechvisas@gmai.com</div>
+              <div>📞 +91 9647457831</div>
+              <div>📍 5QGG+4QP, Rampurhat, West Bengal 731224</div>
+            </div>
             <div className="flex space-x-4">
               <a 
                 href="https://linkedin.com" 
