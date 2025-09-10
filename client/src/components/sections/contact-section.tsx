@@ -7,9 +7,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Checkbox } from "@/components/ui/checkbox";
 import { MapPin, Clock, Headphones, Mail, Phone, MessageSquare, Send, Calendar } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
-import { useMutation } from "@tanstack/react-query";
-import { apiRequest } from "@/lib/queryClient";
-import type { InsertContact } from "@shared/schema";
+import { createWhatsAppMessage, openWhatsApp } from "@/lib/whatsapp-utils";
 
 const budgetRanges = [
   "$10K - $25K",
@@ -28,46 +26,17 @@ const services = [
 ];
 
 export default function ContactSection() {
-  const [formData, setFormData] = useState<InsertContact>({
+  const [formData, setFormData] = useState({
     name: "",
     email: "",
     phone: "",
     company: "",
     budget: "",
-    services: [],
+    services: [] as string[],
     message: ""
   });
   const [agreedToTerms, setAgreedToTerms] = useState(false);
   const { toast } = useToast();
-
-  const contactMutation = useMutation({
-    mutationFn: async (data: InsertContact) => {
-      return apiRequest("POST", "/api/contact", data);
-    },
-    onSuccess: () => {
-      toast({
-        title: "Message Sent Successfully!",
-        description: "Our team will contact you within 24 hours.",
-      });
-      setFormData({
-        name: "",
-        email: "",
-        phone: "",
-        company: "",
-        budget: "",
-        services: [],
-        message: ""
-      });
-      setAgreedToTerms(false);
-    },
-    onError: (error) => {
-      toast({
-        title: "Submission Failed",
-        description: error.message || "Please try again later.",
-        variant: "destructive"
-      });
-    }
-  });
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -79,10 +48,26 @@ export default function ContactSection() {
       });
       return;
     }
-    contactMutation.mutate(formData);
+    
+    if (!formData.name || !formData.email) {
+      toast({
+        title: "Required Fields",
+        description: "Please fill in your name and email address.",
+        variant: "destructive"
+      });
+      return;
+    }
+    
+    const whatsappUrl = createWhatsAppMessage(formData);
+    openWhatsApp(whatsappUrl);
+    
+    toast({
+      title: "Opening WhatsApp",
+      description: "You'll be redirected to WhatsApp to send your message.",
+    });
   };
 
-  const handleInputChange = (field: keyof InsertContact, value: string) => {
+  const handleInputChange = (field: string, value: string) => {
     setFormData(prev => ({ ...prev, [field]: value }));
   };
 
@@ -183,13 +168,23 @@ export default function ContactSection() {
                 <h3 className="font-semibold">Quick Connect</h3>
               </div>
               <div className="space-y-3">
+                <div className="text-sm font-medium text-foreground mb-2">Primary Contact:</div>
                 <a 
-                  href="mailto:apptechvisas@gmai.com" 
+                  href="mailto:apptechvisa@gmail.com" 
                   className="flex items-center text-sm text-muted-foreground hover:text-saffron transition-colors"
                   data-testid="link-email"
                 >
                   <Mail className="mr-2" size={16} />
-                  apptechvisas@gmai.com
+                  📧 apptechvisa@gmail.com
+                </a>
+                <div className="text-sm font-medium text-foreground mb-2 mt-4">Business Inquiries:</div>
+                <a 
+                  href="mailto:info@apptechvisasolutions.in" 
+                  className="flex items-center text-sm text-muted-foreground hover:text-saffron transition-colors"
+                  data-testid="link-email-info"
+                >
+                  <Mail className="mr-2" size={16} />
+                  📧 info@apptechvisasolutions.in
                 </a>
                 <a 
                   href="tel:+919647457831" 
@@ -200,9 +195,11 @@ export default function ContactSection() {
                   +91 9647457831
                 </a>
                 <a 
-                  href="https://wa.me/919647457831" 
+                  href="https://wa.me/919647457831?text=Hi! I'm interested in your IT services. Please contact me to discuss my project requirements." 
                   className="flex items-center text-sm text-muted-foreground hover:text-saffron transition-colors"
                   data-testid="link-whatsapp"
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
                   <MessageSquare className="mr-2" size={16} />
                   WhatsApp Support
@@ -337,17 +334,20 @@ export default function ContactSection() {
                   <Button 
                     type="submit" 
                     className="flex-1 bg-gradient-to-r from-saffron to-navy text-white font-semibold hover:shadow-lg transition-all duration-300 hover:scale-105"
-                    disabled={contactMutation.isPending}
                     data-testid="button-send-message"
                   >
-                    <Send className="mr-2" size={16} />
-                    {contactMutation.isPending ? "Sending..." : "Send Message"}
+                    <MessageSquare className="mr-2" size={16} />
+                    Send via WhatsApp
                   </Button>
                   <Button 
                     type="button"
                     variant="outline"
                     className="flex-1 border-2 border-saffron text-saffron hover:bg-saffron hover:text-white transition-all duration-300"
                     data-testid="button-schedule-call"
+                    onClick={() => {
+                      const whatsappUrl = createSimpleWhatsAppMessage("Hi! I'd like to schedule a call to discuss my project requirements. Please let me know your availability.");
+                      openWhatsApp(whatsappUrl);
+                    }}
                   >
                     <Calendar className="mr-2" size={16} />
                     Schedule Call

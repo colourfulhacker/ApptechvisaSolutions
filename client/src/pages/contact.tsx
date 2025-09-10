@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import ContactSection from "@/components/sections/contact-section";
 import { MessageCircle, Phone, Mail, MapPin, Clock, Headphones, ArrowRight } from "lucide-react";
+import { createSimpleWhatsAppMessage, openWhatsApp } from "@/lib/whatsapp-utils";
 
 const contactMethods = [
   {
@@ -15,7 +16,7 @@ const contactMethods = [
     icon: Mail,
     title: "Email Support",
     description: "Get detailed responses to your inquiries",
-    contact: "apptechvisas@gmai.com",
+    contact: "📧 apptechvisa@gmail.com",
     availability: "24/7 Response within 4 hours"
   },
   {
@@ -29,8 +30,15 @@ const contactMethods = [
     icon: Headphones,
     title: "Technical Support",
     description: "Dedicated support for existing clients",
-    contact: "apptechvisas@gmai.com",
+    contact: "📧 info@apptechvisasolutions.in",
     availability: "24/7 Emergency Support"
+  },
+  {
+    icon: Mail,
+    title: "General Inquiries",
+    description: "For general business inquiries and information",
+    contact: "📧 apptechvisa@gmail.com",
+    availability: "Business Hours Response"
   }
 ];
 
@@ -41,7 +49,7 @@ const faqs = [
   },
   {
     question: "Do you work with international clients?",
-    answer: "Yes! We serve clients across 15+ countries including USA, UK, Canada, Australia, and throughout Europe and Asia."
+    answer: "Yes! We work with clients from various countries including USA, UK, Canada, and other international markets. We provide remote development and support services."
   },
   {
     question: "What technologies do you specialize in?",
@@ -53,7 +61,7 @@ const faqs = [
   },
   {
     question: "How do you ensure project confidentiality?",
-    answer: "We maintain strict NDA protocols, implement secure development practices, and have ISO 27001 certification for information security management."
+    answer: "We maintain strict NDA protocols and implement secure development practices. All client data is protected and we follow industry-standard security measures."
   },
   {
     question: "Can you work within our existing team structure?",
@@ -81,8 +89,12 @@ export default function Contact() {
             <Button 
               className="bg-gradient-to-r from-saffron to-navy text-white px-8 py-4 text-lg font-semibold hover:shadow-xl transition-all duration-300 hover:scale-105"
               data-testid="button-start-conversation"
+              onClick={() => {
+                const whatsappUrl = createSimpleWhatsAppMessage("Hi! I'm interested in your IT services. I'd like to discuss my project requirements and get a consultation.");
+                openWhatsApp(whatsappUrl);
+              }}
             >
-              Start the Conversation
+              Start WhatsApp Chat
               <ArrowRight className="ml-2" size={20} />
             </Button>
           </motion.div>
@@ -187,7 +199,7 @@ export default function Contact() {
               <span className="gradient-text" data-testid="text-global-presence-title">Global Presence, Local Expertise</span>
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-12" data-testid="text-global-presence-description">
-              With offices in India and the USA, we provide round-the-clock support and combine local market knowledge with global technological expertise.
+              Based in India with a focus on serving clients worldwide, we provide quality development services and support to businesses across different time zones.
             </p>
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
@@ -217,10 +229,10 @@ export default function Contact() {
                   <MapPin className="text-white" size={24} />
                 </div>
                 <h3 className="text-xl font-bold mb-3" data-testid="text-usa-office-title">
-                  Global Services
+                  Remote Services
                 </h3>
                 <p className="text-muted-foreground mb-4" data-testid="text-usa-office-description">
-                  We provide worldwide technology solutions and support to clients across multiple continents with 24/7 availability.
+                  We provide remote technology solutions and support to clients worldwide, with flexible working hours to accommodate different time zones.
                 </p>
                 <div className="space-y-2 text-sm">
                   <div className="flex items-center justify-center space-x-2">
@@ -257,13 +269,20 @@ export default function Contact() {
                 variant="secondary"
                 className="bg-white text-navy px-8 py-4 text-lg font-semibold hover:bg-white/90 transition-all duration-300"
                 data-testid="button-contact-cta-primary"
+                onClick={() => {
+                  const whatsappUrl = createSimpleWhatsAppMessage("Hi! I'd like to get a free consultation for my project. Please let me know when you're available to discuss my requirements.");
+                  openWhatsApp(whatsappUrl);
+                }}
               >
                 Get Free Consultation
               </Button>
               <Button 
-                variant="outline"
-                className="border-2 border-white text-white px-8 py-4 text-lg font-semibold hover:bg-white hover:text-navy transition-all duration-300"
+                className="bg-transparent border-2 border-white text-white px-8 py-4 text-lg font-semibold hover:bg-white hover:text-navy transition-all duration-300"
                 data-testid="button-contact-cta-secondary"
+                onClick={() => {
+                  const whatsappUrl = createSimpleWhatsAppMessage("Hi! I'd like to schedule a call to discuss my project. Please let me know your availability.");
+                  openWhatsApp(whatsappUrl);
+                }}
               >
                 Schedule a Call
               </Button>

@@ -2,31 +2,32 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import PortfolioGrid from "@/components/sections/portfolio-grid";
 import { Shield, Award, Users, TrendingUp } from "lucide-react";
+import { createSimpleWhatsAppMessage, openWhatsApp } from "@/lib/whatsapp-utils";
 
 const achievements = [
   {
     icon: TrendingUp,
-    value: "500+",
+    value: "25+",
     label: "Projects Completed",
-    description: "Successfully delivered across diverse industries"
+    description: "Successfully delivered across various industries"
   },
   {
     icon: Users,
-    value: "50+",
-    label: "Global Clients",
-    description: "From startups to Fortune 500 companies"
+    value: "15+",
+    label: "Happy Clients",
+    description: "From startups to growing businesses"
   },
   {
     icon: Award,
-    value: "99%",
+    value: "100%",
     label: "Client Satisfaction", 
-    description: "Consistently exceeding expectations"
+    description: "Every project delivered on time and within budget"
   },
   {
     icon: Shield,
     value: "100%",
-    label: "NDA Compliance",
-    description: "Protecting client confidentiality"
+    label: "Data Security",
+    description: "Protecting client information and privacy"
   }
 ];
 
@@ -45,11 +46,15 @@ export default function Portfolio() {
               <span className="gradient-text" data-testid="text-portfolio-page-title">Our Portfolio</span>
             </h1>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-8" data-testid="text-portfolio-page-description">
-              Explore our collection of transformative projects that have revolutionized businesses across industries. Due to confidentiality agreements, we present anonymized case studies.
+              Explore our recent projects and see how we've helped businesses improve their operations, increase efficiency, and grow their digital presence. Each project represents real solutions for real businesses.
             </p>
             <Button 
               className="bg-gradient-to-r from-saffron to-navy text-white px-8 py-4 text-lg font-semibold hover:shadow-xl transition-all duration-300 hover:scale-105"
               data-testid="button-discuss-project"
+              onClick={() => {
+                const whatsappUrl = createSimpleWhatsAppMessage("Hi! I've seen your portfolio and I'm interested in discussing a project with you. I'd like to know more about your services and get a quote.");
+                openWhatsApp(whatsappUrl);
+              }}
             >
               Discuss Your Project
             </Button>
@@ -115,16 +120,20 @@ export default function Portfolio() {
               <Shield className="text-white" size={24} />
             </div>
             <h3 className="text-2xl font-bold mb-4" data-testid="text-confidentiality-title">
-              Confidentiality & Trust
+              Privacy & Security
             </h3>
             <p className="text-muted-foreground max-w-2xl mx-auto mb-6" data-testid="text-confidentiality-description">
-              We take client confidentiality seriously. Many of our most impactful projects remain under NDA, ensuring your sensitive business information stays protected. The case studies shown represent publicly shareable work with anonymized details.
+              We respect our clients' privacy and only showcase projects with their permission. All client names and sensitive details are anonymized to protect business confidentiality while demonstrating our capabilities.
             </p>
             <Button 
               className="bg-gradient-to-r from-forestgreen to-gold text-white px-6 py-3 font-semibold hover:shadow-lg transition-all duration-300"
               data-testid="button-learn-more-nda"
+              onClick={() => {
+                const whatsappUrl = createSimpleWhatsAppMessage("Hi! I'd like to learn more about your privacy policy and how you handle client data. Can you provide more information?");
+                openWhatsApp(whatsappUrl);
+              }}
             >
-              Learn More About Our NDA Process
+              Learn About Our Privacy Policy
             </Button>
           </motion.div>
         </div>
@@ -149,6 +158,10 @@ export default function Portfolio() {
               variant="secondary"
               className="bg-white text-navy px-8 py-4 text-lg font-semibold hover:bg-white/90 transition-all duration-300"
               data-testid="button-portfolio-cta"
+              onClick={() => {
+                const whatsappUrl = createSimpleWhatsAppMessage("Hi! I'm ready to start my project with your team. I've seen your portfolio and I'm impressed. Let's discuss the next steps and get started!");
+                openWhatsApp(whatsappUrl);
+              }}
             >
               Start Your Project Today
             </Button>

@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { GraduationCap, Rocket, Users, Award, ChartLine, Home, Star, Globe } from "lucide-react";
+import { createSimpleWhatsAppMessage, openWhatsApp } from "@/lib/whatsapp-utils";
 
 const internshipFeatures = [
   { icon: Users, text: "Mentorship from industry experts" },
@@ -12,23 +13,23 @@ const internshipFeatures = [
 const positions = [
   {
     title: "Senior Full Stack Developer",
-    location: "Remote • 5+ years experience",
-    salary: "₹15-25L"
+    location: "Remote • 3+ years experience",
+    salary: "₹4-6L"
   },
   {
     title: "AI/ML Engineer",
-    location: "Hybrid • 3+ years experience", 
-    salary: "₹20-35L"
+    location: "Hybrid • 2+ years experience", 
+    salary: "₹3-6L"
   },
   {
-    title: "DevOps Architect",
-    location: "Remote • 7+ years experience",
-    salary: "₹25-40L"
+    title: "DevOps Engineer",
+    location: "Remote • 2+ years experience",
+    salary: "₹3-6L"
   },
   {
     title: "Mobile App Developer",
-    location: "Remote • 4+ years experience",
-    salary: "₹12-22L"
+    location: "Remote • 1+ years experience",
+    salary: "₹2-6L"
   }
 ];
 
@@ -86,7 +87,7 @@ export default function CareersSection() {
             </div>
             
             <p className="text-muted-foreground mb-6" data-testid="text-internship-description">
-              Work on real client projects alongside senior developers. Gain hands-on experience with Fortune 500 clients while contributing to meaningful solutions.
+              Work on real client projects alongside senior developers. Gain hands-on experience with diverse clients while contributing to meaningful solutions.
             </p>
             
             <div className="space-y-4 mb-8">
@@ -104,7 +105,7 @@ export default function CareersSection() {
                 <div className="text-sm text-muted-foreground">Months Duration</div>
               </div>
               <div className="text-center p-4 bg-background rounded-lg">
-                <div className="text-2xl font-bold gradient-text" data-testid="text-internship-stipend">₹25K+</div>
+                <div className="text-2xl font-bold gradient-text" data-testid="text-internship-stipend">₹10-15K</div>
                 <div className="text-sm text-muted-foreground">Monthly Stipend</div>
               </div>
             </div>
@@ -112,6 +113,10 @@ export default function CareersSection() {
             <Button 
               className="w-full bg-gradient-to-r from-saffron to-navy text-white font-semibold hover:shadow-lg transition-all duration-300"
               data-testid="button-apply-internship"
+              onClick={() => {
+                const whatsappUrl = createSimpleWhatsAppMessage("Hi! I'm interested in applying for an internship at your company. I'd like to know more about the internship program and how to apply.");
+                openWhatsApp(whatsappUrl);
+              }}
             >
               Apply for Internship
             </Button>
@@ -165,6 +170,10 @@ export default function CareersSection() {
               variant="outline"
               className="w-full border-2 border-forestgreen text-forestgreen hover:bg-forestgreen hover:text-white transition-all duration-300"
               data-testid="button-view-all-positions"
+              onClick={() => {
+                const whatsappUrl = createSimpleWhatsAppMessage("Hi! I'd like to view all available positions at your company. Can you provide more details about the job openings and requirements?");
+                openWhatsApp(whatsappUrl);
+              }}
             >
               View All Positions
             </Button>

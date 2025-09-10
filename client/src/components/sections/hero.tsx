@@ -2,12 +2,13 @@ import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { Rocket, Play } from "lucide-react";
+import { createSimpleWhatsAppMessage, openWhatsApp } from "@/lib/whatsapp-utils";
 
 const stats = [
-  { value: 500, label: "Projects Delivered", suffix: "+" },
-  { value: 50, label: "Global Clients", suffix: "+" },
-  { value: 15, label: "Countries Served", suffix: "+" },
-  { value: 99, label: "Success Rate", suffix: "%" },
+  { value: 25, label: "Projects Completed", suffix: "+" },
+  { value: 15, label: "Happy Clients", suffix: "+" },
+  { value: 3, label: "Years Experience", suffix: "+" },
+  { value: 100, label: "Client Satisfaction", suffix: "%" },
 ];
 
 export default function Hero() {
@@ -59,13 +60,17 @@ export default function Hero() {
           </h1>
           
           <p className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-4xl mx-auto leading-relaxed" data-testid="text-hero-description">
-            Empowering businesses worldwide with cutting-edge software development, AI solutions, and digital transformation services. Where Indian innovation meets global standards.
+            Empowering small to medium businesses with modern software development, web applications, and digital solutions. We focus on delivering quality results that help your business grow.
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
             <Button 
               className="bg-gradient-to-r from-saffron to-navy text-white px-8 py-4 text-lg font-semibold hover:shadow-xl transition-all duration-300 hover:scale-105"
               data-testid="button-start-project"
+              onClick={() => {
+                const whatsappUrl = createSimpleWhatsAppMessage("Hi! I'm interested in starting a new project with your team. I'd like to discuss my requirements and get a quote.");
+                openWhatsApp(whatsappUrl);
+              }}
             >
               <Rocket className="mr-2" size={20} />
               Start Your Project
@@ -74,9 +79,13 @@ export default function Hero() {
               variant="outline"
               className="border-2 border-saffron text-saffron px-8 py-4 text-lg font-semibold hover:bg-saffron hover:text-white transition-all duration-300"
               data-testid="button-watch-demo"
+              onClick={() => {
+                const whatsappUrl = createSimpleWhatsAppMessage("Hi! I'd like to see a demo of your work and understand how you can help with my project.");
+                openWhatsApp(whatsappUrl);
+              }}
             >
               <Play className="mr-2" size={20} />
-              Watch Demo
+              Get Demo
             </Button>
           </div>
           

@@ -1,7 +1,9 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import ServicesGrid from "@/components/sections/services-grid";
+import CostCalculator from "@/components/sections/cost-calculator";
 import { ArrowRight, Code, Zap, Users, Target } from "lucide-react";
+import { createSimpleWhatsAppMessage, openWhatsApp } from "@/lib/whatsapp-utils";
 
 const processSteps = [
   {
@@ -46,6 +48,10 @@ export default function Services() {
             <Button 
               className="bg-gradient-to-r from-saffron to-navy text-white px-8 py-4 text-lg font-semibold hover:shadow-xl transition-all duration-300 hover:scale-105"
               data-testid="button-get-started"
+              onClick={() => {
+                const whatsappUrl = createSimpleWhatsAppMessage("Hi! I'm interested in your services. I'd like to discuss which services would be best for my project and get more information.");
+                openWhatsApp(whatsappUrl);
+              }}
             >
               Get Started
               <ArrowRight className="ml-2" size={20} />
@@ -56,6 +62,9 @@ export default function Services() {
 
       {/* Services Grid */}
       <ServicesGrid />
+
+      {/* Cost Calculator */}
+      <CostCalculator />
 
       {/* Our Process */}
       <section className="py-20 bg-muted/30">
@@ -115,13 +124,20 @@ export default function Services() {
                 variant="secondary"
                 className="bg-white text-navy px-8 py-4 text-lg font-semibold hover:bg-white/90 transition-all duration-300"
                 data-testid="button-cta-contact"
+                onClick={() => {
+                  const whatsappUrl = createSimpleWhatsAppMessage("Hi! I'd like to contact you about your services. Please let me know when you're available to discuss my project requirements.");
+                  openWhatsApp(whatsappUrl);
+                }}
               >
                 Contact Us Today
               </Button>
               <Button 
-                variant="outline"
-                className="border-2 border-white text-white px-8 py-4 text-lg font-semibold hover:bg-white hover:text-navy transition-all duration-300"
+                className="bg-transparent border-2 border-white text-white px-8 py-4 text-lg font-semibold hover:bg-white hover:text-navy transition-all duration-300"
                 data-testid="button-cta-demo"
+                onClick={() => {
+                  const whatsappUrl = createSimpleWhatsAppMessage("Hi! I'd like to request a demo of your services. Please let me know when you can show me your work.");
+                  openWhatsApp(whatsappUrl);
+                }}
               >
                 Request Demo
               </Button>

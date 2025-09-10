@@ -15,6 +15,30 @@ export default defineConfig({
   build: {
     outDir: path.resolve(import.meta.dirname, "dist"),
     emptyOutDir: true,
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          vendor: ['react', 'react-dom'],
+          wouter: ['wouter'],
+          ui: ['@radix-ui/react-dialog', '@radix-ui/react-dropdown-menu', '@radix-ui/react-tooltip'],
+        },
+      },
+    },
   },
   base: "/",
+  define: {
+    global: 'globalThis',
+    'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'production'),
+  },
+  optimizeDeps: {
+    include: ['react', 'react-dom', 'wouter'],
+  },
+  server: {
+    port: 3000,
+    host: true,
+  },
+  preview: {
+    port: 3000,
+    host: true,
+  },
 });

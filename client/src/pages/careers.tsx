@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import CareersSection from "@/components/sections/careers-section";
 import { MapPin, Users, Briefcase, Heart } from "lucide-react";
+import { createSimpleWhatsAppMessage, openWhatsApp } from "@/lib/whatsapp-utils";
 
 const cultureValues = [
   {
@@ -27,18 +28,18 @@ const cultureValues = [
 ];
 
 const perks = [
-  "Competitive salary packages",
-  "Comprehensive health insurance",
-  "Professional development budget",
+  "Competitive salary packages (up to 6 LPA)",
+  "Health insurance coverage",
+  "Professional development opportunities",
   "Flexible working hours",
   "Remote work options",
-  "Stock options for senior roles",
-  "Annual team retreats",
   "Latest technology equipment",
-  "Conference attendance support",
   "Mentorship programs",
   "Performance bonuses",
-  "Paid sabbaticals"
+  "Learning & development budget",
+  "Team building activities",
+  "Career growth opportunities",
+  "Work-life balance support"
 ];
 
 export default function Careers() {
@@ -61,6 +62,10 @@ export default function Careers() {
             <Button 
               className="bg-gradient-to-r from-saffron to-navy text-white px-8 py-4 text-lg font-semibold hover:shadow-xl transition-all duration-300 hover:scale-105"
               data-testid="button-view-openings"
+              onClick={() => {
+                const whatsappUrl = createSimpleWhatsAppMessage("Hi! I'm interested in career opportunities at your company. I'd like to know more about open positions and the application process.");
+                openWhatsApp(whatsappUrl);
+              }}
             >
               View Open Positions
             </Button>
@@ -206,6 +211,10 @@ export default function Careers() {
               variant="secondary"
               className="bg-white text-forestgreen px-8 py-4 text-lg font-semibold hover:bg-white/90 transition-all duration-300"
               data-testid="button-careers-cta"
+              onClick={() => {
+                const whatsappUrl = createSimpleWhatsAppMessage("Hi! I'm ready to apply for a position at your company. I'd like to discuss my qualifications and the next steps in the application process.");
+                openWhatsApp(whatsappUrl);
+              }}
             >
               Apply Now
             </Button>

@@ -3,6 +3,7 @@ import { Link, useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Menu, X, Code } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { createSimpleWhatsAppMessage, openWhatsApp } from "@/lib/whatsapp-utils";
 
 const navigationItems = [
   { href: "/", label: "Home" },
@@ -51,6 +52,10 @@ export default function Navigation() {
             <Button 
               className="bg-gradient-to-r from-saffron to-navy text-white hover:shadow-lg transition-all duration-300 hover:scale-105"
               data-testid="button-free-demo"
+              onClick={() => {
+                const whatsappUrl = createSimpleWhatsAppMessage("Hi! I'd like to get a free demo of your services. Please let me know when you're available to show me your work.");
+                openWhatsApp(whatsappUrl);
+              }}
             >
               Free Demo
             </Button>
@@ -90,7 +95,11 @@ export default function Navigation() {
             ))}
             <Button 
               className="w-full mt-2 bg-gradient-to-r from-saffron to-navy text-white"
-              onClick={closeMobileMenu}
+              onClick={() => {
+                closeMobileMenu();
+                const whatsappUrl = createSimpleWhatsAppMessage("Hi! I'd like to get a free demo of your services. Please let me know when you're available to show me your work.");
+                openWhatsApp(whatsappUrl);
+              }}
               data-testid="button-mobile-free-demo"
             >
               Free Demo
